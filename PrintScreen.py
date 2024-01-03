@@ -1,16 +1,16 @@
 import pyautogui
 import os
-import datetime
+from datetime import datetime
 
 path = os.path.dirname(os.path.abspath(__file__))
 
 
-
-def take_screen(number):
+def take_screen():
     time = datetime.now()
-    screen_path = os.path.join(path, f'screen{time}.png')
+    hour = str(time.hour)
+    minute = str(time.minute)
+    screen_path = os.path.join(path, f'screen-{hour}-{minute}.png')
     screen = pyautogui.screenshot()
     screen.save(screen_path)
-
 
 
