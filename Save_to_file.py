@@ -12,6 +12,12 @@ def save_to_file(data):
     file.close()
 
 
+def clear_key():
+    if os.path.exists(script_path_key):
+        os.remove(script_path_key)
+
+
+
 # def looking_for_emails():
 #     patern_one = re.compile(r"([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])")
 #     file = open(script_path_key, 'r')
@@ -26,8 +32,3 @@ def save_to_file(data):
 #         file = open(script_path_key, 'w')
 #         file.write(text)
 #         file.close()
-
-
-def clear_key():
-    if os.path.exists(script_path_key):
-        os.remove(script_path_key)

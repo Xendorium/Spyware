@@ -1,3 +1,4 @@
+import time
 from pynput import keyboard
 import Save_to_file
 
@@ -8,8 +9,8 @@ def key_press(key):
 
 
 def key_release(key):
-    if key == keyboard.Key.enter or key == keyboard.Key.space:
-        return False
+    time.sleep(0.000001)
+    return False
 
 
 def hook_keyboard():
