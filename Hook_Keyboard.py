@@ -11,6 +11,3 @@ def hook_keyboard():
         listener.join()
     print(listener)
 
-
-while True:
-    hook_keyboard()
