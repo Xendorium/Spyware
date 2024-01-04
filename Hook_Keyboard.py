@@ -9,7 +9,6 @@ def key_press(key):
 
 
 def key_release(key):
-    time.sleep(0.000001)
     return False
 
 
