@@ -16,7 +16,7 @@ script_path_key = os.path.join(path, 'key.txt')
 def sendmail():
     sender = "Jan.Adamczewski.Pawel@gmail.com"
     receiver = sender
-    password = ""
+    password = "vrbf jmke rwrz cwzp"
     body = "Data: "
 
     msg = MIMEMultipart()
