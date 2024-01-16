@@ -17,7 +17,7 @@ def screen():
 
 def email():
     while True:
-        time.sleep(60)
+        time.sleep(30)
         Email_Connection.sendmail()
 
 
